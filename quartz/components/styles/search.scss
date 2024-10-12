@@ -152,6 +152,7 @@
           display: block;
           overflow: hidden;
           font-family: inherit;
+          scrollbar-width: none;
           color: var(--dark);
           line-height: 1.5em;
           font-weight: $normalWeight;

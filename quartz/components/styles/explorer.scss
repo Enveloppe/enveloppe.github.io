@@ -69,6 +69,7 @@ button#explorer {
   & ul {
     list-style: none;
     margin: 0.08rem 10px;
+    scrollbar-width: none;
     padding: 0;
     transition:
       max-height 0.35s ease,

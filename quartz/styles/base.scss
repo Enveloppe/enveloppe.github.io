@@ -198,12 +198,16 @@ a {
     & .sidebar.right {
       right: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
       flex-wrap: wrap;
-      z-index: 999;
+      z-index: 3;
+      padding: 3rem;
       & > * {
         @media all and (max-width: $fullPageWidth) {
           flex: 1;
           min-width: 140px;
         }
+      }
+      &.hide {
+        z-index: -1 !important;
       }
     }
   }

@@ -153,6 +153,8 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const searchBar = document.getElementById("search-bar") as HTMLInputElement | null
   const searchLayout = document.getElementById("search-layout")
   const idDataMap = Object.keys(data) as FullSlug[]
+	const rightLayout = document.querySelector(".right.sidebar");
+	if (rightLayout) rightLayout.classList.remove("hide");
 
 	const appendLayout = (el: HTMLElement) => {
 		if (searchLayout?.querySelector(`#${el.id}`) === null) {
@@ -190,6 +192,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 		if (searchLayout) {
 			searchLayout.classList.remove("display-results");
 		}
+		if (rightLayout) rightLayout.classList.remove("hide");
 
     searchType = "basic" // reset search type after closing
 
@@ -203,6 +206,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 		}
 		container?.classList.add("active");
 		searchBar?.focus();
+		if (rightLayout) rightLayout.classList.add("hide");
 	}
 
 	let currentHover: HTMLInputElement | null = null;

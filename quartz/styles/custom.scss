@@ -17,10 +17,9 @@ ol.overflow {
 }
 
 .page .page-header {
-  padding: 1px;
-  padding-left: 4dvw;
+  padding: 1px 1px 1px 1dvw;
   width: auto;
-  margin-left: -4dvw;
+  margin-left: -1dvw;
   margin-right: -1dvw;
 }
 
@@ -52,7 +51,7 @@ ol.overflow {
   top: 0;
   border-bottom: 1px solid var(--lightgray);
   background-color: var(--light);
-  z-index: 100;
+  z-index: 1;
   margin-top: 0 !important;
 
   &.fixed {
