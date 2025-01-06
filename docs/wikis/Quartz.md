@@ -2,7 +2,10 @@
 title: Quartz
 ---
 
--> [PRESET](https://github.com/Enveloppe/plugin-presets):
+> [!warning]
+> Quartz is provided by Jingwen Zhao, and thus, no support is provided by the Enveloppe team. If you have any questions, please refer to the [official documentation](https://quartz.jzhao.xyz/).
+
+-> [PRESET](https://github.com/Enveloppe/plugin-presets) <-
 
 - [YAML based](https://github.com/Enveloppe/plugin-presets/blob/main/presets/quartz-yaml-based.json)
 - [Obsidian path based](https://github.com/Enveloppe/plugin-presets/blob/main/presets/quartz-yaml-based.json)

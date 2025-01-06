@@ -2,17 +2,27 @@
 title: Mkdocs
 ---
 
-## [Enveloppe](https://enveloppe.github.io/)
+## Local
+### Requirements
+- [Python 3.13](https://www.python.org/downloads/)
+- [uv](https://docs.astral.sh/uv/)
 
-> [!warning] Mkdocs is now deprecated, no support and help will be provided.
+### Local installation
+To install and locally test the Mkdocs plugin, you need to follow these steps:
+```
+pip install uv
+uv venv
+uv sync
+uv run mkdocs serve
+```
 
-### Quick installation tutorial
+## Quick installation tutorial
 
-1. Click on [use this template](https://github.com/enveloppe/mkdocs-publisher-template/generate)
+1. Click on [use this template](https://github.com/enveloppe/mkdocs/generate)
 1. Use the name of your choice
-1. Set and edit the `mkdocs.yml` in the root of the repository. You can set up this by following the [tutorial here](https://enveloppe.github.io/template/configuration/#mkdocs-configuration)
+1. Set and edit the `mkdocs.yml` in the root of the repository. It is possible to use a github action: "generate.yml", that will automatically update the mkdocs.yml.
 
-### Plugin configuration
+## Plugin configuration
 
 🆕** Enveloppe 6.1.0** : You can load the settings from the preset using the button "Preset" and selecting `mkdocs` in the selector!
 
@@ -32,7 +42,7 @@ The mandatory settings are :
    - <u>Default attachment folder:</u> `docs/assets/img`
      The images must be in the `docs/` folder, but you can change the `assets/img` part as you want.
 
-#### Support
+### Support
 
 - [x] Wiki links (`[[Links]]`)
 - [x] File transclusion/embed, both wiki links and markdown links
@@ -42,4 +52,3 @@ The mandatory settings are :
 - [x] Sharing state and custom folder hierarchies
 - [x] Mobile and desktop compatibility
 - [x] File mini preview on hover
-- [x] Graph view 🎉 (using [obsidiantools](https://github.com/mfarragher/obsidiantools))
