@@ -23,7 +23,7 @@ env:
   FETCH_SUBMODULE: false # change this to true if you use submodule for the docs
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -54,10 +54,24 @@ jobs:
       - name: Build
         run: |
          uv run mkdocs build --clean
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: setup pages
+        id: pages
+        uses: actions/configure-pages@main
+      - name: Upload page artifact
+        uses: actions/upload-pages-artifact@main
         with:
-          github_token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-
+          path: ./site
+  deploy:
+    needs: [build]
+    permissions:
+      pages: write
+      id-token: write
+    environment: 
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to github page
+        id: deployment
+        uses: actions/deploy-pages@main
 
