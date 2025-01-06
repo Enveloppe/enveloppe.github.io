@@ -1,6 +1,6 @@
 site_name: Enveloppe # Change this to your site name
 site_description: Documentation of Enveloppe, an Obsidian plugin that allows to send file into a GitHub repository.
-site_url: www.enveloppe.mara-li.fr
+site_url: https://www.enveloppe.mara-li.fr
 site_author: Enveloppe
 repo_url: https://github.com/Enveloppe/wiki
 edit_uri: edit/main/docs/
