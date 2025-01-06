@@ -53,5 +53,11 @@ jobs:
           uv sync --no-dev
       - name: Build
         run: |
-         uv run mkdocs gh-deploy --force
+         uv run mkdocs build --clean
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+
 
