@@ -1,7 +1,16 @@
-
-.md-tabs__item:nth-child(4) {
-	display: none;
-}
+.md-tabs__item:nth-child(4),
 a.md-nav__link.md-nav__link--active[href="."] {
 	display: none;
 }
+
+.md-header,
+.md-nav--primary .md-nav__title {
+  background: var(--md-primary-fg-color)
+    url(https://images.unsplash.com/photo-1510070009289-b5bc34383727?w=950&q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.md-tabs {
+	background-color: #00000094;
+  }
