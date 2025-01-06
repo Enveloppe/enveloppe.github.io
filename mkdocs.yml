@@ -1,0 +1,151 @@
+site_name: $site_name # Change this to your site name
+site_description: $site_description
+site_url: $site_url # Change this to your site URL
+site_author: $site_author
+
+theme:
+    name: 'material'
+    logo: _assets/meta/logo.png
+    favicon: _assets/meta/favicons.png
+    custom_dir: overrides
+    font:
+        text: Karla
+        code: Ubuntu Mono
+    language: $language
+    palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Passer au mode sombre
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode clair
+    features:
+        - navigation.indexes
+        - navigation.top
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - search.suggest
+        - search.highlight
+# Extensions
+markdown_extensions:
+  - footnotes
+  - nl2br
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - meta
+  - smarty
+  - tables
+  - mdx_breakless_lists
+  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+  - pymdownx.tasklist:
+       custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/icons
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: dataview
+          class: dataview
+          format: !!python/name:pymdownx.superfences.fence_div_format
+        - name: folderv
+          class: folderv
+          format: !!python/name:pymdownx.superfences.fence_div_format
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+      preserve_tabs: true
+plugins:
+  - search
+  - meta-descriptions
+  - awesome-pages
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      post_readtime_words_per_minute: 300
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+      locale: fr
+      custom_format: "%A %d %B %Y"
+      enable_creation_date: true
+  - ezlinks:
+      wikilinks: true
+  - embed_file:
+      callouts: true
+      custom-attributes: '_static/css/custom_attributes.css'
+  - custom-attributes:
+      file: '_static/css/custom_attributes.css'
+  - tags:
+      tags_file: tags.md
+  - callouts
+  - glightbox
+hooks:
+  - overrides/hooks/on_page_markdown.py
+  - overrides/hooks/on_env.py
+  - overrides/hooks/on_post_page.py
+extra_javascript:
+  - _static/js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - _static/js/snippets.js
+  - https://cdn.jsdelivr.net/gh/Enveloppe/_static@refs/heads/master/dist/index.js
+
+extra_css:
+    - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css
+    - _static/css/admonition.css
+    - _static/css/custom_attributes.css
+    - _static/css/customization.css
+    - https://cdn.jsdelivr.net/gh/Enveloppe/_static@refs/heads/master/dist/styles.css
+extra:
+  SEO: '_assets/meta/logo.png'
+  comments: $comments
+  attachments: '_assets/img/'
+  no-auto-h1: $auto_h1
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Enveloppe/
+  blog_list:
+    pagination: true
+    pagination_message: true
+    pagination_translation: 'posts in'
+    no_page_found: 'No pages found!'
+  hooks:
+    strip_comments: true
+    fix_heading: true
+  icons:
+    folder: "icons/" #from root _assets ; see overrides/partials/nav-item.html and overrides/partials/tabs-item.html
+    default:
+      file: "file.svg"
+      folder: "folder-open.svg"
+      index: "index.svg"

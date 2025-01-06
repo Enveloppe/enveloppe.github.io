@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+<!-- Content -->
+{% block content %}
+<style>
+    .md-sidebar {
+        display: none;
+    }
+
+    .md-grid {
+        margin-left: 0 !important;
+    }
+
+    .img_404_format {
+        max-width: 200% !important;
+    }
+</style>
+  <img src="assets/meta/error_404.svg" 
+  width="1280"
+  height="900"
+  class="img_404_format">
+{% endblock %}

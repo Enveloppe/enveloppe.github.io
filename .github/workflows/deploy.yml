@@ -1,0 +1,57 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths: 
+      - 'README.md'
+      - 'overrides/**'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'uv.lock'
+  repository_dispatch:
+    types: [build]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  FETCH_SUBMODULE: false # change this to true if you use submodule for the docs
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          submodules: 'recursive'
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+            enable-cache: true
+            cache-dependency-glob: "uv.lock"
+      - name: "Submodule fetching"
+        continue-on-error: true
+        if: ${{ env.FETCH_SUBMODULE }}
+        run: |
+          git submodule update --init --recursive --checkout -f --remote -- "docs"
+          git config --global user.name "GitHub Action"
+          git config --global user.email "noreply@github.com"
+          git commit -am "chore (update): fetch submodule"
+          git push
+      - name: Install python
+        run: uv python install
+      - name: Install dependencies
+        run: |
+          uv sync --no-dev
+      - name: Build
+        run: |
+         uv run mkdocs gh-deploy --force
+

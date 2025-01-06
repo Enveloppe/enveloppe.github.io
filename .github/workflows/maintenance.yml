@@ -1,0 +1,110 @@
+name: Repository maintenance
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_call:
+    inputs:
+      CLEAN:
+        description: "Clean unused images"
+        required: false
+        default: true
+        type: boolean
+      DRY_RUN:
+        description: "Dry run"
+        required: false
+        default: false
+        type: boolean
+      BRANCH:
+        type: string
+        description: 'Branch to push changes to'
+        required: false
+        default: 'main'
+      UPDATE_REQUIREMENTS:
+        description: "Update requirements"
+        required: false
+        default: true
+        type: boolean
+      OPTIMIZE_IMAGES:
+        description: "Optimize images"
+        required: false
+        default: true
+        type: boolean
+    secrets:
+      GH_PAT:
+        required: true
+      author_email:
+        required: false
+        description: "The author email"
+      author_name:
+        required: false
+        description: "The author name"
+jobs:
+  unused_images:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+        cache-dependency-glob: "uv.lock"
+    - name: Install python
+      run: uv python install
+    - name: Install dependencies
+      run: |
+        uv sync
+    - name: Clean
+      if: inputs.CLEAN
+      run: |
+       echo "Cleaning"
+       pipenv run python .github/find_unused_image.py
+    - name: Commit
+      if: inputs.CLEAN && inputs.DRY_RUN == false
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN}}
+        author_email: ${{ secrets.AUTHOR_EMAIL || 'github-actions[bot]@users.noreply.github.com' }}
+        author_name: ${{ secrets.AUTHOR_NAME || 'github-actions[bot]' }}
+        branch: ${{ inputs.BRANCH }}
+  update-requirements:
+    runs-on: ubuntu-latest
+    if: inputs.UPDATE_REQUIREMENTS
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+        cache-dependency-glob: "uv.lock"
+    - name: Install python
+      run: uv python install
+    - name: Install dependencies
+      run: uv sync --no-dev
+    - name: Update lock
+      run: uv lock --upgrade
+    - name: Commit
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN}}
+        author_email: ${{ secrets.AUTHOR_EMAIL || 'github-actions[bot]@users.noreply.github.com' }}
+        author_name: ${{ secrets.AUTHOR_NAME || 'github-actions[bot]' }}
+        branch: ${{ github.ref }}
+        message: "[CI] Update lock"
+  optimize-images:
+    runs-on: ubuntu-latest
+    if: inputs.OPTIMIZE_IMAGES
+    steps:
+      - uses: actions/checkout@v4
+      - name: optimize
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN}}
+          ignorePaths: "_assets/meta/**"
+          compressOnly: true
+      - name: "Commit & push"
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          message: "[CI] Optimize images"
+
