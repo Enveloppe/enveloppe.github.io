@@ -39,7 +39,7 @@ jobs:
             cache-dependency-glob: "uv.lock"
       - name: "Submodule fetching"
         continue-on-error: true
-        if: ${{ env.FETCH_SUBMODULE }}
+        if: ${{ env.FETCH_SUBMODULE == 'true' }}
         run: |
           git submodule update --init --recursive --checkout -f --remote -- "docs"
           git config --global user.name "GitHub Action"
