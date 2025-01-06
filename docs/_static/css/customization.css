@@ -1,0 +1,7 @@
+
+.md-tabs__item:nth-child(4) {
+	display: none;
+}
+a.md-nav__link.md-nav__link--active[href="."] {
+	display: none;
+}

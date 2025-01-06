@@ -1,7 +1,7 @@
-site_name: $site_name # Change this to your site name
-site_description: $site_description
-site_url: $site_url # Change this to your site URL
-site_author: $site_author
+site_name: Enveloppe # Change this to your site name
+site_description: Documentation of Enveloppe, an Obsidian plugin that allows to send file into a GitHub repository.
+site_url: https://enveloppe.github.io
+site_author: Enveloppe
 
 theme:
     name: 'material'
@@ -11,7 +11,7 @@ theme:
     font:
         text: Karla
         code: Ubuntu Mono
-    language: $language
+    language: en
     palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
@@ -108,7 +108,7 @@ plugins:
   - custom-attributes:
       file: '_static/css/custom_attributes.css'
   - tags:
-      tags_file: tags.md
+      tags_file: hidden/tags.md
   - callouts
   - glightbox
 hooks:
@@ -129,9 +129,9 @@ extra_css:
     - https://cdn.jsdelivr.net/gh/Enveloppe/_static@refs/heads/master/dist/styles.css
 extra:
   SEO: '_assets/meta/logo.png'
-  comments: $comments
+  comments: false
   attachments: '_assets/img/'
-  no-auto-h1: $auto_h1
+  no-auto-h1: true
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Enveloppe/
