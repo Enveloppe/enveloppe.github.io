@@ -4,7 +4,7 @@ site_url: https://Enveloppe.github.io/
 site_author: Enveloppe
 repo_url: https://github.com/Enveloppe/Enveloppe.github.io
 edit_uri: edit/main/docs/
-repo_name: Enveloppe/Enveloppe.github.io
+repo_name: Enveloppe
 use_directory_urls: false
 
 theme:
