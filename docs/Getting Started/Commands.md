@@ -22,7 +22,7 @@ It includes:
 
 - `Upload single current active note` _(also in the right-click menu)_ : Send only the single current active note. The repo can be changed using the [[./Settings/Per files settings|frontmatter]].
 - `Upload all notes` : Send all shared notes to the configured repository.
-- `Upload unpublished notes` : Send only the shared note that are not present on the repository.
+- `Upload new notes` : Send only the **shared note** that are not present on the repository.
 
 ## Refresh
 

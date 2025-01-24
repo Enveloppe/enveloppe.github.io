@@ -56,14 +56,14 @@ The plugin adds 8 commands in the palette, one of which is also available in the
 
 - `Upload single current active note` (_available in the right-click menu_)
 - `Upload all notes`
-- `Upload unpublished notes`
+- `Upload new notes`
 - `Refresh published and upload new notes`
 - `Refresh all published notes`
 - `Purge depublished and deleted files`
 - `Test the connection to the configured repository`
 - `Check the rate limit of the GitHub API`
 
-Each of the commands are explained [here](https://enveloppe.ovh/Commands).
+Each of the commands are explained [[Commands|here]].
 
 ## 🤖 How it works
 
