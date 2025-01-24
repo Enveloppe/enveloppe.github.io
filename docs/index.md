@@ -22,12 +22,10 @@ Enveloppe is a remarkable project that enables you to effortlessly transmit file
 
 1. Install the plugins through Obsidian Community or [BRAT](https://github.com/TfTHacker/obsidian42-brat)
 2. Configure the plugin options:
-
-- Repo name
-- Your GitHub username
-- The GitHub token (available [here](https://github.com/settings/tokens/new?scopes=repo))
-- The share key
-
+   - Repo name
+   - Your GitHub username
+   - The GitHub token (available [here](https://github.com/settings/tokens/new?scopes=repo))
+   - The share key
 3. Add the sharing key as `true` in Obsidian's note frontmatter
 4. Customize (or not) the folder options
 5. Run the commands through the file menu or commands palette.

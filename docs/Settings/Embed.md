@@ -33,12 +33,21 @@ Additionally, you can choose to send files based on a metadata field. This means
 >
 > ```
 > ---
-> banner: my_image.png
+> banner: [[my_image.png]]
 > ---
 > ```
 >
 > If you set the metadata `banner`, the image will be sent to the default attachment folder. All attachments supported by Obsidian (plus Markdown files) are supported.
 > This means that you can send images, pdfs, audio files and any other types of files that are supported by Obsidian and are embedded in your notes.
+
+> [!TIP]
+> Using wikilink in the metadata is a more reliable way to send the file into your repository.
+> If you needs to remove it, you should use a regex, like this:
+>
+> | Regex                                       | Replacement  | After   | in code blocks | Example (Regex101)                                                                      |
+> |---------------------------------------------|--------------|---------|----------------|-----------------------------------------------------------------------------------------|
+> | `/banner: \"[{2}(.*)\/(.*)\|(.*)]{2}\"\|/g` | `banner: $2` | `false` | `false`        | [Keep only the name of the link that is set with path](https://regex101.com/r/FgdOLP/1) |
+> | `/banner: "[](([^\)+)(?:\|[^]]+)?]]"\|/g`   | `banner: $1` | `false` | `false`        | [Same as above, but with a non path, alias optional](https://regex101.com/r/NkaFxE/1)   |
 
 This feature allows you to easily share all the necessary resources in your notes with your remote repository.
 
